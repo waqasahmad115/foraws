@@ -6,6 +6,7 @@ from rest_framework.status import  HTTP_200_OK,HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView
 from .serializers import SecurityPersonnelSerializer
 from users .models import SecurityPersonnel
+from django.contrib import auth
 
 User=get_user_model()
 from .serializers import (
@@ -35,14 +36,7 @@ class UserLoginAPIView(APIView):
         serializer=UserLoginSerializer(data=data)
         if serializer.is_valid():
             new_data=serializer.data
-            response = {
-                 'result': '1'
-                }
-            return Response(response,status=HTTP_200_OK)
-        else:   
-            response1 = {
-                 'result': '0'
-                }
-            return Response(response1,status=HTTP_400_BAD_REQUEST)
+            return Response(new_data,status=HTTP_200_OK)
+        return Response(serializer.errors,status=HTTP_400_BAD_REQUEST)
 
 

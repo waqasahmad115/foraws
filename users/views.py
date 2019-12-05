@@ -594,25 +594,25 @@ def hevcvedio(request):
 # def dashboard(request):
 #     return render(request,'dashboard.html')
 
-def register(request):
-    if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            User.is_staff=True
-            save_it=form.save()
-            username = form.cleaned_data.get('username')
-            form_email=form.cleaned_data.get('email')
-            subject = 'Thank you for registering to our site Automated Survaillance System'
-            message = ' Your Account Will be verify within maximum of the 1 Day duration.An Email will be sent to your account ,by clicking on activation link .you will be able to login to site .'
-            email_from = settings.EMAIL_HOST_USER
-            to_list = [email_from,form_email]
-            send_mail( subject, message, email_from, to_list,fail_silently=False)
-        #   messages.success(request, f'Account created for {username}!')
-            messages.success(request, f'Email has been sent to your Account .Please Check it First !')
-            return redirect('base')
-    else:
-        form = UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form})
+# def register(request):
+#     if request.method == 'POST':
+#         form = UserRegisterForm(request.POST)
+#         if form.is_valid():
+#             User.is_staff=True
+#             save_it=form.save()
+#             username = form.cleaned_data.get('username')
+#             form_email=form.cleaned_data.get('email')
+#             subject = 'Thank you for registering to our site Automated Survaillance System'
+#             message = ' Your Account Will be verify within maximum of the 1 Day duration.An Email will be sent to your account ,by clicking on activation link .you will be able to login to site .'
+#             email_from = settings.EMAIL_HOST_USER
+#             to_list = [email_from,form_email]
+#             send_mail( subject, message, email_from, to_list,fail_silently=False)
+#         #   messages.success(request, f'Account created for {username}!')
+#             messages.success(request, f'Email has been sent to your Account .Please Check it First !')
+#             return redirect('base')
+#     else:
+#         form = UserRegisterForm()
+#     return render(request, 'users/register.html', {'form': form})
 
 @login_required
 def profile(request):
@@ -668,6 +668,43 @@ def signup(request):
             return render(request, 'users/signup', {'error': "Passwords Don't Match"})
     else:
         return render(request, 'users/signup.html')
+
+def register(request):
+    if request.method == "POST":
+        # to create a user
+        if request.POST['pass'] == request.POST['passwordagain']:
+            # both the passwords matched
+            # now check if a previous user exists
+            try:
+                user = User.objects.get(username=request.POST['uname'])
+                
+                return render(request, 'users/register.html', {'error': "Username Has Already Been Taken"})
+            except User.DoesNotExist:
+                user = User.objects.create_user(username= request.POST['uname'],password= request.POST['pass'])
+                zone = request.POST['zone']
+                stime=request.POST['stime']
+                etime=request.POST['etime']
+
+                Controlroomoperator=  ControlRoomOperator( operator_area=zone, user=user,start_time=stime, end_time=etime)
+                Controlroomoperator.save()
+                email = request.POST.get('email')
+                subject = 'Thank you for registering to our site Automated Survaillance System'
+                message = ' Your Account Will be verify within maximum of the 1 Day duration.An Email will be sent to your account ,by clicking on activation link .you will be able to login to site .'
+                email_from = settings.EMAIL_HOST_USER
+                to_list = [email_from,email]
+                send_mail( subject, message, email_from, to_list,fail_silently=False)
+            #   messages.success(request, f'Account created for {username}!')
+                messages.success(request, f'Email has been sent to your Account .Please Check it First !')
+
+                auth.login(request, user)
+                
+             #  return HttpResponse("Signned Up !")
+                messages.success(request, f'Email has been sent to your Account !')
+                return redirect('base')
+        else:
+            return render(request, 'users/register', {'error': "Passwords Don't Match"})
+    else:
+        return render(request, 'users/register.html')
 
 
 def user_list(request):

@@ -31,7 +31,7 @@ DEBUG = True
 # for production make below statement uncomment
 #DEBUG=(os.environ.get('DEBUG_VALUE')=='True')
 # for the project deployment mysurveillancesapp.herokuapp.com
-ALLOWED_HOSTS = ['https://survilancesystem.herokuapp.com']
+ALLOWED_HOSTS = ['https://survilancesystem.herokuapp.com/']
 
 EMIAL_HOST='smtp.gmail.com'
 EMIAL_HOST_USER='ec.smtp.test3@gmail.com'
@@ -208,7 +208,7 @@ REST_FRAMEWORK = {
          #'rest_framework.permissions.IsAuthenticated',
          #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
          #'rest_framework.permissions.DjangoModelPermissions',
-         #'rest_framework.permissions.AllowAny',
+         'rest_framework.permissions.AllowAny',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
          'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
