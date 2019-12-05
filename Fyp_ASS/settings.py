@@ -31,7 +31,7 @@ DEBUG = True
 # for production make below statement uncomment
 #DEBUG=(os.environ.get('DEBUG_VALUE')=='True')
 # for the project deployment mysurveillancesapp.herokuapp.com
-ALLOWED_HOSTS = ['https://surveillancesystemapps.herokuapp.com']
+ALLOWED_HOSTS = ['https://survilancesystem.herokuapp.com']
 
 EMIAL_HOST='smtp.gmail.com'
 EMIAL_HOST_USER='ec.smtp.test3@gmail.com'
