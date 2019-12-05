@@ -1,0 +1,53 @@
+{% extends "navbar.html" %} {% load crispy_forms_tags %} {% block content %}
+<form action="{% url 'addpoi_form' %}" method="post">
+  {% csrf_token %}
+  <div class="form-group bg-secondary">
+    <label >Name* </label>
+  <input class="form-control p-6" type="text" name="name" placeholder="name"><br>
+  <label >age*</label>
+  <input class="form-control" type="number" name="age" placeholder="age"><br>
+  <label >DOB* </label>
+  <input class="form-control" type="date" name="DOB" placeholder="dob"><br>
+  <label >Comments * </label>
+  <input class="form-control" type="text" name="comments" placeholder="comments"><br>
+  
+  <label >Enter Threat Level* </label>
+  <input class="form-control" type="text" name="threat_level" placeholder="threat"><br>
+  <label >Enter Image 1* </label>
+  <input class="form-control" type="file" src="../media/POI/uploads/" name="image1" accept="image/*"><br>
+  <br> 
+  <label >Enter Image 2* </label>
+  <input class="form-control" type="file" src="../media/POI/uploads/" name="image2" accept="image/*"><br>
+  <br> 
+  <label >Enter Image 3* </label>
+  <input class="form-control" type="file"  src="../media/POI/uploads/" name="image3" accept="image/*"><br>
+  <br> 
+  <label >Enter Image 4* </label>
+  <input class="form-control" type="file" name="image4" src="../media/POI/uploads/" accept="image/*"><br>
+  <br> 
+  <label >Enter Image 5* </label>
+  <input class="form-control" type="file" name="image5"  src="../media/POI/uploads/"  accept="image/*"><br>
+  <br> 
+  <label >Enter Image 6* </label>
+  <input class="form-control" type="file" name="image6"  src="../media/POI/uploads/" accept="image/*"><br>
+  <br> 
+  <label >Enter Image 7* </label>
+  <input class="form-control" type="file" name="image7"  src="../media/POI/uploads/"  accept="image/*"><br>
+  <br> 
+  <label >Enter Image 8* </label>
+  <input class="form-control" type="file" name="image8"  src="../media/POI/uploads/"  accept="image/*"><br>
+  <br> 
+  <label >Enter Image 9* </label>
+  <input class="form-control" type="file" name="image9"  src="../media/POI/uploads/"  accept="image/*"><br>
+  <br> 
+
+  <label >Enter Image 10* </label>
+  <input class="form-control" type="file" name="image10"  src="../media/POI/uploads/"  accept="image/*"><br>
+  <br> 
+    
+  </div>
+  <div class="form-group">
+    <input  class="btn btn-outline-info" type="submit" value="Add POI ">
+</form>
+
+{% endblock content %}

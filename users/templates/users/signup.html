@@ -1,0 +1,40 @@
+
+{% extends "navbar.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="row" p-2>
+    <div class="col-lg-10  offset-1">
+    <div class="content-section border-bottom border-top border-left  border-right bg-light">
+        <form method="POST" action="{% url 'signup' %}">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Registration Form for Security Personnel</legend>
+                    {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+              <label >Username* </label>
+            <input class="form-control p-6" type="text" name="uname" placeholder="Username"><br>
+            <label >Password*</label>
+            <input class="form-control" type="password" name="pass" placeholder="Password"><br>
+            <label >Re-Type-Password* </label>
+            <input class="form-control" type="password" name="passwordagain" placeholder="Cofirm Password"><br>
+            <label >Email * </label>
+            <input class="form-control" type="email" name="email" placeholder="email"><br>
+            <label >Phone Number*  </label>
+            <input class="form-control" type="number" name="phone" placeholder="Phone Number"><br>
+            <label >Zone Area* </label>
+            <input class="form-control" type="text" name="zone" placeholder="zone area"><br>
+            <label >Working Start Time * </label>
+            <input class="form-control" type="time" name="stime" placeholder="start time "><br>
+            <label >Working End Time* </label>
+            <input class="form-control" type="time" name="etime" placeholder="end time "><br>
+  
+            <input  class="btn btn-outline-info" type="submit" value="Sign Up">
+        </div>
+          </form>
+        </form>
+        </div>
+        </div>
+    </div>>
+
+  {% endblock content %}

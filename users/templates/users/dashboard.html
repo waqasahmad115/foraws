@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en-us" >
+<head>
+<title>Site administration|Automated
+Survaillance System</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+
+<link rel="stylesheet" type="text/css" href="/static/jet/css/vendor.css?v=1.0.8" />
+<link rel="stylesheet" type="text/css" href="/static/jet/css/icons/style.css?v=1.0.8" />
+<link rel="stylesheet" type="text/css" href="/static/jet/css/themes/default/base.css?v=1.0.8" class="base-stylesheet" />
+<link rel="stylesheet" type="text/css" href="/static/jet/css/themes/default/select2.theme.css?v=1.0.8" class="select2-stylesheet" />
+<link rel="stylesheet" type="text/css" href="/static/jet/css/themes/default/jquery-ui.theme.css?v=1.0.8" class="jquery-ui-stylesheet" />
+
+
+    
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css" />
+
+    
+
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+    var DATE_FORMAT = "%Y-%m-%d";
+    var TIME_FORMAT = "%H:%M:%S";
+    var DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S";
+</script>
+<script type="text/javascript" src="/jet/jsi18n/"></script>
+<script src="/static/jet/js/build/bundle.min.js?v=1.0.8"></script>
+
+
+
+    <script src="/static/jet/js/i18n/select2/en.js?v=1.0.8"></script>
+
+
+
+    
+
+    
+
+<meta name="robots" content="NONE,NOARCHIVE" />
+</head>
+
+
+<body class=" dashboard jet"
+  data-admin-utc-offset="0">
+
+<!-- Container -->
+<div id="container">
+
+    
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+            <span id="branding-menu" class="sidebar-header-menu-icon icon-menu sidebar-toggle"></span>
+            <span id="branding-pin" class="sidebar-link-icon icon-pin sidebar-pin"></span>
+            
+<h1 id="site_name" class="bg-dark w-100">
+  <a href="/admin/">Automated Survaillance System </a>
+</h1>
+
+        </div>
+        
+        
+        <div id="user-tools">
+            
+                Welcome,
+                <strong>admin</strong>.
+            
+            
+                
+                    <a href="/">View site</a> /
+                
+                
+                    
+                    
+                
+                
+                <a href="/admin/password_change/">Change password</a> /
+                
+                <a href="/admin/logout/">Log out</a>
+            
+        </div>
+        
+        
+    </div>
+    <!-- END Header -->
+
+    
+    
+        <div class="breadcrumbs"></div>
+    
+
+    
+
+<div class="dashboard-tools-toggle-container">
+    <a href="#" class="dashboard-tools-toggle button">
+        <span class="dashboard-tools-toggle-icon icon-settings"></span>
+    </a>
+</div>
+<div class="dashboard-tools">
+    <form action="/jet/dashboard/add_user_dashboard_module/" method="POST" id="add-dashboard-module-form">
+        <input type="hidden" name="csrfmiddlewaretoken" value="bZSaEV3UVrWyyuwBoBw7EIKSPqdn1jEk5FO8CeJRyrv72IlMdG1Iyzjp9d81WLv1">
+        <select class="add-dashboard" name="module">
+            <option>widgets</option>
+            <optgroup label="available">
+                
+                    <option value="0" data-type="available_children">Links</option>
+                
+                    <option value="1" data-type="available_children">RSS Feed</option>
+                
+            </optgroup>
+            <optgroup label="initials">
+                
+                    <option value="0" data-type="children">Quick links</option>
+                
+                    <option value="1" data-type="children">Applications</option>
+                
+                    <option value="2" data-type="children">Administration</option>
+                
+                    <option value="3" data-type="children">Recent Actions</option>
+                
+                    <option value="4" data-type="children">Latest Django News</option>
+                
+                    <option value="5" data-type="children">Support</option>
+                
+            </optgroup>
+        </select><a href="#" class="button add-dashboard-link" title="Add"><span class="add-dashboard-link-icon icon-add"></span><span class="add-dashboard-link-label">Add</span></a>
+        <input type="hidden" name="app_label" value="">
+        <input type="hidden" name="type" value="">
+        <a href="#" class="button transparent reset-dashboard-link" title="Reset widgets"><span class="reset-dashboard-link-icon icon-reset"></span><span class="reset-dashboard-link-label">Reset widgets</span></a>
+    </form>
+    <form action="/jet/dashboard/reset_dashboard/" method="POST" id="reset-dashboard-form">
+        <input type="hidden" name="csrfmiddlewaretoken" value="bZSaEV3UVrWyyuwBoBw7EIKSPqdn1jEk5FO8CeJRyrv72IlMdG1Iyzjp9d81WLv1">
+        <input type="hidden" name="app_label" value="">
+    </form>
+    <div class="dialog-confirm" id="reset-dashboard-dialog" title="Reset widgets">
+        <p>Are you sure want to reset widgets?</p>
+    </div>
+</div>
+
+
+
+    
+
+    
+        
+    
+
+    <!-- Content -->
+    <div id="content" class="colM">
+        
+        <h1>Site administration</h1>
+        
+    
+
+<div class="dashboard-container columns_3 cf">
+    
+        <div class="dashboard-column-wrapper">
+            <div class="dashboard-column first">
+                
+                    
+                        
+
+<div class="dashboard-item collapsible deletable draggable" data-module-id="43">
+    <div class="dashboard-item-header">
+        
+            <span class="dashboard-item-header-drag icon-grid"></span>
+        
+        <span class="dashboard-item-header-buttons">
+            <a href="/jet/dashboard/module/43/" title="Change"><span class="icon-edit"></span></a>
+
+            
+                <a href="#" title="Delete" class="dashboard-item-remove"><span class="icon-cross"></span></a>
+            
+        </span>
+        <span class="dashboard-item-header-title">
+            
+                <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+            
+
+            
+                Recent Actions
+            
+        </span>
+        <div class="cf"></div>
+    </div>
+
+    <div class="dashboard-item-content">
+        
+        
+            
+
+<ul>
+    
+        
+            <li>
+                <span class="float-right">
+                    <span class="icon-user tooltip" title="admin"></span>
+                    <span class="icon-clock tooltip" title="Oct. 4, 2019, 8:11 p.m."></span>
+                </span>
+
+                <div class="nowrap">
+                    
+                        <span class="icon-add3"></span>
+                    
+                    
+                    
+
+                    
+                        <span>My zone</span>
+                    
+
+                    
+                        <a title="Added." class="tooltip" href="/admin/camera/myzone/6/change/">MyZone object (6)</a>
+                    
+                </div>
+            </li>
+        
+            <li>
+                <span class="float-right">
+                    <span class="icon-user tooltip" title="admin"></span>
+                    <span class="icon-clock tooltip" title="Oct. 4, 2019, 8:10 p.m."></span>
+                </span>
+
+                <div class="nowrap">
+                    
+                    
+                        <span class="icon-edit"></span>
+                    
+                    
+
+                    
+                        <span>My detected_ poi</span>
+                    
+
+                    
+                        <a title="No fields changed." class="tooltip" href="/admin/camera/mydetected_poi/2/change/">MyDetected_Poi object (2)</a>
+                    
+                </div>
+            </li>
+        
+            <li>
+                <span class="float-right">
+                    <span class="icon-user tooltip" title="admin"></span>
+                    <span class="icon-clock tooltip" title="Oct. 4, 2019, 8:10 p.m."></span>
+                </span>
+
+                <div class="nowrap">
+                    
+                        <span class="icon-add3"></span>
+                    
+                    
+                    
+
+                    
+                        <span>My detected_ poi</span>
+                    
+
+                    
+                        <a title="Added." class="tooltip" href="/admin/camera/mydetected_poi/2/change/">MyDetected_Poi object (2)</a>
+                    
+                </div>
+            </li>
+        
+            <li>
+                <span class="float-right">
+                    <span class="icon-user tooltip" title="admin"></span>
+                    <span class="icon-clock tooltip" title="Oct. 4, 2019, 8:09 p.m."></span>
+                </span>
+
+                <div class="nowrap">
+                    
+                        <span class="icon-add3"></span>
+                    
+                    
+                    
+
+                    
+                        <span>My camera</span>
+                    
+
+                    
+                        <a title="Added." class="tooltip" href="/admin/camera/mycamera/6/change/">0.05 0.06</a>
+                    
+                </div>
+            </li>
+        
+            <li>
+                <span class="float-right">
+                    <span class="icon-user tooltip" title="admin"></span>
+                    <span class="icon-clock tooltip" title="Oct. 4, 2019, 7:43 p.m."></span>
+                </span>
+
+                <div class="nowrap">
+                    
+                    
+                        <span class="icon-edit"></span>
+                    
+                    
+
+                    
+                        <span>Registration profile</span>
+                    
+
+                    
+                        <a title="Changed activated." class="tooltip" href="/admin/registration/registrationprofile/39/change/">Registration information for p1</a>
+                    
+                </div>
+            </li>
+        
+            <li>
+                <span class="float-right">
+                    <span class="icon-user tooltip" title="admin"></span>
+                    <span class="icon-clock tooltip" title="Oct. 4, 2019, 7:42 p.m."></span>
+                </span>
+
+                <div class="nowrap">
+                    
+                    
+                        <span class="icon-edit"></span>
+                    
+                    
+
+                    
+                        <span>User</span>
+                    
+
+                    
+                        <a title="No fields changed." class="tooltip" href="/admin/auth/user/98/change/">p1</a>
+                    
+                </div>
+            </li>
+        
+            <li>
+                <span class="float-right">
+                    <span class="icon-user tooltip" title="admin"></span>
+                    <span class="icon-clock tooltip" title="Oct. 4, 2019, 7:35 p.m."></span>
+                </span>
+
+                <div class="nowrap">
+                    
+                        <span class="icon-add3"></span>
+                    
+                    
+                    
+
+                    
+                        <span>My poi</span>
+                    
+
+                    
+                        <a title="Added." class="tooltip" href="/admin/poi/mypoi/3/change/">waqas ahmad profile_pics/71071246_997166380700052_2567524667795439616_n.jpg</a>
+                    
+                </div>
+            </li>
+        
+            <li>
+                <span class="float-right">
+                    <span class="icon-user tooltip" title="admin"></span>
+                    <span class="icon-clock tooltip" title="Oct. 4, 2019, 7:34 p.m."></span>
+                </span>
+
+                <div class="nowrap">
+                    
+                    
+                        <span class="icon-edit"></span>
+                    
+                    
+
+                    
+                        <span>My poi</span>
+                    
+
+                    
+                        <a title="Changed DOB." class="tooltip" href="/admin/poi/mypoi/2/change/">akash profile_pics/default_T6ahu0L.jpg</a>
+                    
+                </div>
+            </li>
+        
+            <li>
+                <span class="float-right">
+                    <span class="icon-user tooltip" title="admin"></span>
+                    <span class="icon-clock tooltip" title="Sept. 29, 2019, 11:04 a.m."></span>
+                </span>
+
+                <div class="nowrap">
+                    
+                    
+                    
+                        <span class="icon-cross"></span>
+                    
+
+                    
+                        <span>User</span>
+                    
+
+                    
+                        <span class="tooltip" title="">o2</span>
+                    
+                </div>
+            </li>
+        
+            <li>
+                <span class="float-right">
+                    <span class="icon-user tooltip" title="admin"></span>
+                    <span class="icon-clock tooltip" title="Sept. 29, 2019, 9:48 a.m."></span>
+                </span>
+
+                <div class="nowrap">
+                    
+                    
+                        <span class="icon-edit"></span>
+                    
+                    
+
+                    
+                        <span>Registration profile</span>
+                    
+
+                    
+                        <a title="No fields changed." class="tooltip" href="/admin/registration/registrationprofile/39/change/">Registration information for p1</a>
+                    
+                </div>
+            </li>
+        
+    
+</ul>
+        
+        
+    </div>
+</div>
+
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+        <div class="dashboard-column-wrapper">
+            <div class="dashboard-column">
+                
+                    
+                
+                    
+                        
+
+<div class="dashboard-item collapsible deletable draggable" data-module-id="41">
+    <div class="dashboard-item-header">
+        
+            <span class="dashboard-item-header-drag icon-grid"></span>
+        
+        <span class="dashboard-item-header-buttons">
+            <a href="/jet/dashboard/module/41/" title="Change"><span class="icon-edit"></span></a>
+
+            
+                <a href="#" title="Delete" class="dashboard-item-remove"><span class="icon-cross"></span></a>
+            
+        </span>
+        <span class="dashboard-item-header-title">
+            
+                <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+            
+
+            
+                Dashboard
+            
+        </span>
+        <div class="cf"></div>
+    </div>
+
+    <div class="dashboard-item-content">
+        
+        
+            
+
+<ul>
+    
+        <li class="contrast">
+            
+                
+                <a href="/admin/camera/" title="Models in the camera application">camera</a>
+            
+        </li>
+
+        
+            <li>
+                <span class="float-right">
+                    
+                        <a href="/admin/camera/mycamera/add/" class="addlink" title="Add"></a>
+                    
+
+                    
+                        <a href="/admin/camera/mycamera/" class="changelink" title="Change"></a>
+                    
+                </span>
+
+                
+                    <a href="/admin/camera/mycamera/">My cameras</a>
+                
+            </li>
+        
+            <li>
+                <span class="float-right">
+                    
+                        <a href="/admin/camera/mydetected_poi/add/" class="addlink" title="Add"></a>
+                    
+
+                    
+                        <a href="/admin/camera/mydetected_poi/" class="changelink" title="Change"></a>
+                    
+                </span>
+
+                
+                    <a href="/admin/camera/mydetected_poi/">My detected_ pois</a>
+                
+            </li>
+        
+            <li>
+                <span class="float-right">
+                    
+                        <a href="/admin/camera/myzone/add/" class="addlink" title="Add"></a>
+                    
+
+                    
+                        <a href="/admin/camera/myzone/" class="changelink" title="Change"></a>
+                    
+                </span>
+
+                
+                    <a href="/admin/camera/myzone/">My zones</a>
+                
+            </li>
+        
+    
+        <li class="contrast">
+            
+                
+                <a href="/admin/poi/" title="Models in the poi application">poi</a>
+            
+        </li>
+
+        
+            <li>
+                <span class="float-right">
+                    
+                        <a href="/admin/poi/mypoi/add/" class="addlink" title="Add"></a>
+                    
+
+                    
+                        <a href="/admin/poi/mypoi/" class="changelink" title="Change"></a>
+                    
+                </span>
+
+                
+                    <a href="/admin/poi/mypoi/">My pois</a>
+                
+            </li>
+        
+    
+        <li class="contrast">
+            
+                
+                <a href="/admin/registration/" title="Models in the registration application">registration</a>
+            
+        </li>
+
+        
+            <li>
+                <span class="float-right">
+                    
+                        <a href="/admin/registration/registrationprofile/add/" class="addlink" title="Add"></a>
+                    
+
+                    
+                        <a href="/admin/registration/registrationprofile/" class="changelink" title="Change"></a>
+                    
+                </span>
+
+                
+                    <a href="/admin/registration/registrationprofile/">Registration profiles</a>
+                
+            </li>
+        
+    
+        <li class="contrast">
+            
+                
+                <a href="/admin/sites/" title="Models in the sites application">sites</a>
+            
+        </li>
+
+        
+            <li>
+                <span class="float-right">
+                    
+                        <a href="/admin/sites/site/add/" class="addlink" title="Add"></a>
+                    
+
+                    
+                        <a href="/admin/sites/site/" class="changelink" title="Change"></a>
+                    
+                </span>
+
+                
+                    <a href="/admin/sites/site/">Sites</a>
+                
+            </li>
+        
+    
+        <li class="contrast">
+            
+                
+                <a href="/admin/user/" title="Models in the user application">user</a>
+            
+        </li>
+
+        
+            <li>
+                <span class="float-right">
+                    
+                        <a href="/admin/user/profile/add/" class="addlink" title="Add"></a>
+                    
+
+                    
+                        <a href="/admin/user/profile/" class="changelink" title="Change"></a>
+                    
+                </span>
+
+                
+                    <a href="/admin/user/profile/">Profiles</a>
+                
+            </li>
+        
+    
+</ul>
+
+        
+        
+    </div>
+</div>
+
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+        <div class="dashboard-column-wrapper">
+            <div class="dashboard-column">
+                
+                    
+                
+                    
+                
+                    
+                        
+
+<div class="dashboard-item collapsible deletable draggable" data-module-id="42">
+    <div class="dashboard-item-header">
+        
+            <span class="dashboard-item-header-drag icon-grid"></span>
+        
+        <span class="dashboard-item-header-buttons">
+            <a href="/jet/dashboard/module/42/" title="Change"><span class="icon-edit"></span></a>
+
+            
+                <a href="#" title="Delete" class="dashboard-item-remove"><span class="icon-cross"></span></a>
+            
+        </span>
+        <span class="dashboard-item-header-title">
+            
+                <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
+                <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-up"></span></a>
+            
+
+            
+                Administration
+            
+        </span>
+        <div class="cf"></div>
+    </div>
+
+    <div class="dashboard-item-content">
+        
+        
+            
+
+<ul>
+    
+        <li class="contrast">
+            
+                <a href="/admin/auth/" title="Models in the Authentication and Authorization application">Authentication and Authorization</a>
+            
+        </li>
+
+        
+            <li>
+                <span class="float-right">
+                    
+                        <a href="/admin/auth/user/add/" class="addlink" title="Add"></a>
+                    
+
+                    
+                        <a href="/admin/auth/user/" class="changelink" title="Change"></a>
+                    
+                </span>
+
+                
+                    <a href="/admin/auth/user/">Users</a>
+                
+            </li>
+        
+    
+</ul>
+
+        
+        
+    </div>
+</div>
+
+                    
+                
+            </div>
+        </div>
+    
+</div>
+
+<div class="dialog-confirm" id="module-remove-dialog" title="Delete widget">
+    <p>Are you sure want to delete this widget?</p>
+</div>
+
+<form action="/jet/dashboard/update_dashboard_modules/" method="POST" id="update-dashboard-modules-form">
+    <input type="hidden" name="csrfmiddlewaretoken" value="Ok4DtAR5S3zuy3ssaWjJ0KJba0O93OFtI00BrTx2v3832hhDZ1OkUBiIuNJNYgwa">
+    <input type="hidden" name="app_label" value="">
+    <input type="hidden" name="modules">
+</form>
+
+<form action="/jet/dashboard/update_dashboard_module_collapse/" method="POST" id="update-dashboard-module-collapse-form">
+    <input type="hidden" name="csrfmiddlewaretoken" value="Ok4DtAR5S3zuy3ssaWjJ0KJba0O93OFtI00BrTx2v3832hhDZ1OkUBiIuNJNYgwa">
+    <input type="hidden" name="id">
+    <input type="hidden" name="collapsed">
+</form>
+
+<form action="/jet/dashboard/remove_dashboard_module/" method="POST" id="remove-dashboard-module-form">
+    <input type="hidden" name="csrfmiddlewaretoken" value="Ok4DtAR5S3zuy3ssaWjJ0KJba0O93OFtI00BrTx2v3832hhDZ1OkUBiIuNJNYgwa">
+    <input type="hidden" name="id">
+</form>
+
+
+
+        
+        <br class="clear" />
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+
+    
+    
+
+    
+    
+
+    
+    
+        <div class="related-popup-container scrollable">
+            <a href="#" class="related-popup-back">
+                <span class="related-popup-back-icon icon-arrow-left"></span>
+                <span class="related-popup-back-label">back</span>
+            </a>
+            <span class="icon-refresh loading-indicator"></span>
+        </div>
+
+        <div class="sidebar-header-wrapper sidebar-dependent">
+            <div class="sidebar-header sidebar-dependent">
+                <a href="#" class="sidebar-header-menu sidebar-toggle">
+                    <span class="sidebar-header-menu-icon icon-menu"></span>
+                    <span class="sidebar-header-menu-icon icon-cross"></span>
+                </a>
+            </div>
+        </div>
+        <div class="sidebar sidebar-dependent">
+            <div class="sidebar-wrapper scrollable">
+                <div class="sidebar-section">
+                    
+                        <a href="/admin/" class="sidebar-link icon">
+                            <span class="sidebar-link-label">
+                                <span class="sidebar-link-icon icon-data"></span>
+                                Home
+                            </span>
+                        </a>
+                    
+                    
+                        <a href="/" class="sidebar-link icon">
+                            <span class="sidebar-link-label">
+                                <span class="sidebar-link-icon icon-open-external"></span>
+                                View site
+                            </span>
+                        </a>
+                    
+                    
+                    
+                    
+                </div>
+
+                
+                    
+                    
+                        <form action="/jet/toggle_application_pin/" method="POST" id="toggle-application-pin-form">
+                            <input type="hidden" name="csrfmiddlewaretoken" value="xwRIlOBzBIxaNbtypUDtDdqcbgGcZOGtrcNGj7hweI6JhpiJeZ84x4ZJv3BQUgxa">
+                            <input type="hidden" name="app_label">
+                        </form>
+
+                        <div class="sidebar-section">
+                            <div class="sidebar-title">
+                                <span class="sidebar-right">
+                                    <a href="#" class="sidebar-right-edit edit-apps-list"><span class="icon-settings"></span></a>
+                                </span>
+                                Applications
+                            </div>
+
+                            <div class="apps-list-pinned">
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                                    
+                                
+                            </div>
+                            <a href="#" class="sidebar-center-link apps-hide">
+                                <span class="apps-hide-label apps-visible">Hide applications</span>
+                                <span class="apps-hide-label apps-hidden">Show hidden</span>
+                            </a>
+                            <div class="apps-list">
+                                
+                                    
+                                        <a href="/admin/auth/" class="sidebar-link popup-section-link app-item" data-app-label="auth" data-popup-section-class="sidebar-popup-section-auth" data-order="1">
+                                            <span class="sidebar-left collapsible">
+                                                <span class="sidebar-left-pin icon-star pin-toggle"></span>
+                                                <span class="sidebar-left-unpin icon-cross pin-toggle"></span>
+                                            </span>
+
+                                            <span class="sidebar-right">
+                                                <span class="sidebar-right-arrow icon-arrow-right"></span>
+                                            </span>
+
+                                            <span class="sidebar-link-label">
+                                                Authentication and Authorization
+                                            </span>
+                                        </a>
+                                    
+                                
+                                    
+                                        <a href="/admin/camera/" class="sidebar-link popup-section-link app-item" data-app-label="camera" data-popup-section-class="sidebar-popup-section-camera" data-order="2">
+                                            <span class="sidebar-left collapsible">
+                                                <span class="sidebar-left-pin icon-star pin-toggle"></span>
+                                                <span class="sidebar-left-unpin icon-cross pin-toggle"></span>
+                                            </span>
+
+                                            <span class="sidebar-right">
+                                                <span class="sidebar-right-arrow icon-arrow-right"></span>
+                                            </span>
+
+                                            <span class="sidebar-link-label">
+                                                Camera
+                                            </span>
+                                        </a>
+                                    
+                                
+                                    
+                                        <a href="/admin/poi/" class="sidebar-link popup-section-link app-item" data-app-label="poi" data-popup-section-class="sidebar-popup-section-poi" data-order="3">
+                                            <span class="sidebar-left collapsible">
+                                                <span class="sidebar-left-pin icon-star pin-toggle"></span>
+                                                <span class="sidebar-left-unpin icon-cross pin-toggle"></span>
+                                            </span>
+
+                                            <span class="sidebar-right">
+                                                <span class="sidebar-right-arrow icon-arrow-right"></span>
+                                            </span>
+
+                                            <span class="sidebar-link-label">
+                                                Poi
+                                            </span>
+                                        </a>
+                                    
+                                
+                                    
+                                        <a href="/admin/registration/" class="sidebar-link popup-section-link app-item" data-app-label="registration" data-popup-section-class="sidebar-popup-section-registration" data-order="4">
+                                            <span class="sidebar-left collapsible">
+                                                <span class="sidebar-left-pin icon-star pin-toggle"></span>
+                                                <span class="sidebar-left-unpin icon-cross pin-toggle"></span>
+                                            </span>
+
+                                            <span class="sidebar-right">
+                                                <span class="sidebar-right-arrow icon-arrow-right"></span>
+                                            </span>
+
+                                            <span class="sidebar-link-label">
+                                                Registration
+                                            </span>
+                                        </a>
+                                    
+                                
+                                    
+                                        <a href="/admin/sites/" class="sidebar-link popup-section-link app-item" data-app-label="sites" data-popup-section-class="sidebar-popup-section-sites" data-order="5">
+                                            <span class="sidebar-left collapsible">
+                                                <span class="sidebar-left-pin icon-star pin-toggle"></span>
+                                                <span class="sidebar-left-unpin icon-cross pin-toggle"></span>
+                                            </span>
+
+                                            <span class="sidebar-right">
+                                                <span class="sidebar-right-arrow icon-arrow-right"></span>
+                                            </span>
+
+                                            <span class="sidebar-link-label">
+                                                Sites
+                                            </span>
+                                        </a>
+                                    
+                                
+                                    
+                                        <a href="/admin/user/" class="sidebar-link popup-section-link app-item" data-app-label="user" data-popup-section-class="sidebar-popup-section-user" data-order="6">
+                                            <span class="sidebar-left collapsible">
+                                                <span class="sidebar-left-pin icon-star pin-toggle"></span>
+                                                <span class="sidebar-left-unpin icon-cross pin-toggle"></span>
+                                            </span>
+
+                                            <span class="sidebar-right">
+                                                <span class="sidebar-right-arrow icon-arrow-right"></span>
+                                            </span>
+
+                                            <span class="sidebar-link-label">
+                                                User
+                                            </span>
+                                        </a>
+                                    
+                                
+                            </div>
+                        </div>
+                    
+
+                    <div class="sidebar-section last">
+                        <div class="dialog-confirm" id="bookmarks-add-dialog" title="Add bookmark">
+                            <form action="/jet/add_bookmark/" method="POST" id="bookmarks-add-form">
+                                <input type="hidden" name="csrfmiddlewaretoken" value="xwRIlOBzBIxaNbtypUDtDdqcbgGcZOGtrcNGj7hweI6JhpiJeZ84x4ZJv3BQUgxa">
+                                <p>Title:</p>
+                                <input type="text" name="title" class="fill_width">
+                                <p>URL:</p>
+                                <input type="text" name="url" class="fill_width">
+                            </form>
+                        </div>
+                        <form action="/jet/remove_bookmark/" method="POST" id="bookmarks-remove-form">
+                            <input type="hidden" name="csrfmiddlewaretoken" value="xwRIlOBzBIxaNbtypUDtDdqcbgGcZOGtrcNGj7hweI6JhpiJeZ84x4ZJv3BQUgxa">
+                            <input type="hidden" name="id">
+                        </form>
+                        <div class="dialog-confirm" id="bookmarks-remove-dialog" title="Delete bookmark">
+                            <p>Are you sure want to delete this bookmark?</p>
+                        </div>
+
+                        <div class="sidebar-title">
+                            <span class="sidebar-right">
+                                <a href="#" class="sidebar-right-plus bookmarks-add" title="Add bookmark" data-title="Site administration"><span class="icon-add"></span></a>
+                            </span>
+                            bookmarks
+                        </div>
+
+                        <div class="bookmarks-list">
+                            
+                            
+                            <a class="sidebar-link bookmark-item clone">
+                                <span class="sidebar-right collapsible">
+                                    <span class="sidebar-right-remove bookmarks-remove">Remove</span>
+                                </span>
+                                <span class="sidebar-link-label"></span>
+                            </a>
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                <div class="sidebar-popup-container">
+                    <div class="sidebar-popup scrollable">
+                        <a href="#" class="sidebar-close sidebar-back">
+                            <span class="sidebar-close-icon icon-arrow-left"></span>
+                        </a>
+                        
+                            
+                                <div class="sidebar-popup-section sidebar-popup-section-auth">
+                                    <div class="sidebar-popup-title">
+                                        Authentication and Authorization
+                                    </div>
+
+                                    <input class="sidebar-popup-search" placeholder="Search...">
+
+                                    <ul class="sidebar-popup-list">
+                                        
+                                            <li class="sidebar-popup-list-item app-auth">
+                                                <a href="/admin/auth/" class="sidebar-popup-list-item-link">Application page</a>
+                                            </li>
+                                        
+
+                                        
+                                            
+                                                <li class="sidebar-popup-list-item model-user">
+                                                    <a href="/admin/auth/user/" class="sidebar-popup-list-item-link">
+                                                        Users
+                                                    </a>
+                                                </li>
+                                            
+                                        
+                                    </ul>
+                                </div>
+                            
+                        
+                            
+                                <div class="sidebar-popup-section sidebar-popup-section-camera">
+                                    <div class="sidebar-popup-title">
+                                        Camera
+                                    </div>
+
+                                    <input class="sidebar-popup-search" placeholder="Search...">
+
+                                    <ul class="sidebar-popup-list">
+                                        
+                                            <li class="sidebar-popup-list-item app-camera">
+                                                <a href="/admin/camera/" class="sidebar-popup-list-item-link">Application page</a>
+                                            </li>
+                                        
+
+                                        
+                                            
+                                                <li class="sidebar-popup-list-item model-mycamera">
+                                                    <a href="/admin/camera/mycamera/" class="sidebar-popup-list-item-link">
+                                                        My cameras
+                                                    </a>
+                                                </li>
+                                            
+                                        
+                                            
+                                                <li class="sidebar-popup-list-item model-mydetected_poi">
+                                                    <a href="/admin/camera/mydetected_poi/" class="sidebar-popup-list-item-link">
+                                                        My detected_ pois
+                                                    </a>
+                                                </li>
+                                            
+                                        
+                                            
+                                                <li class="sidebar-popup-list-item model-myzone">
+                                                    <a href="/admin/camera/myzone/" class="sidebar-popup-list-item-link">
+                                                        My zones
+                                                    </a>
+                                                </li>
+                                            
+                                        
+                                    </ul>
+                                </div>
+                            
+                        
+                            
+                                <div class="sidebar-popup-section sidebar-popup-section-poi">
+                                    <div class="sidebar-popup-title">
+                                        Poi
+                                    </div>
+
+                                    <input class="sidebar-popup-search" placeholder="Search...">
+
+                                    <ul class="sidebar-popup-list">
+                                        
+                                            <li class="sidebar-popup-list-item app-poi">
+                                                <a href="/admin/poi/" class="sidebar-popup-list-item-link">Application page</a>
+                                            </li>
+                                        
+
+                                        
+                                            
+                                                <li class="sidebar-popup-list-item model-mypoi">
+                                                    <a href="/admin/poi/mypoi/" class="sidebar-popup-list-item-link">
+                                                        My pois
+                                                    </a>
+                                                </li>
+                                            
+                                        
+                                    </ul>
+                                </div>
+                            
+                        
+                            
+                                <div class="sidebar-popup-section sidebar-popup-section-registration">
+                                    <div class="sidebar-popup-title">
+                                        Registration
+                                    </div>
+
+                                    <input class="sidebar-popup-search" placeholder="Search...">
+
+                                    <ul class="sidebar-popup-list">
+                                        
+                                            <li class="sidebar-popup-list-item app-registration">
+                                                <a href="/admin/registration/" class="sidebar-popup-list-item-link">Application page</a>
+                                            </li>
+                                        
+
+                                        
+                                            
+                                                <li class="sidebar-popup-list-item model-registrationprofile">
+                                                    <a href="/admin/registration/registrationprofile/" class="sidebar-popup-list-item-link">
+                                                        Registration profiles
+                                                    </a>
+                                                </li>
+                                            
+                                        
+                                    </ul>
+                                </div>
+                            
+                        
+                            
+                                <div class="sidebar-popup-section sidebar-popup-section-sites">
+                                    <div class="sidebar-popup-title">
+                                        Sites
+                                    </div>
+
+                                    <input class="sidebar-popup-search" placeholder="Search...">
+
+                                    <ul class="sidebar-popup-list">
+                                        
+                                            <li class="sidebar-popup-list-item app-sites">
+                                                <a href="/admin/sites/" class="sidebar-popup-list-item-link">Application page</a>
+                                            </li>
+                                        
+
+                                        
+                                            
+                                                <li class="sidebar-popup-list-item model-site">
+                                                    <a href="/admin/sites/site/" class="sidebar-popup-list-item-link">
+                                                        Sites
+                                                    </a>
+                                                </li>
+                                            
+                                        
+                                    </ul>
+                                </div>
+                            
+                        
+                            
+                                <div class="sidebar-popup-section sidebar-popup-section-user">
+                                    <div class="sidebar-popup-title">
+                                        User
+                                    </div>
+
+                                    <input class="sidebar-popup-search" placeholder="Search...">
+
+                                    <ul class="sidebar-popup-list">
+                                        
+                                            <li class="sidebar-popup-list-item app-user">
+                                                <a href="/admin/user/" class="sidebar-popup-list-item-link">Application page</a>
+                                            </li>
+                                        
+
+                                        
+                                            
+                                                <li class="sidebar-popup-list-item model-profile">
+                                                    <a href="/admin/user/profile/" class="sidebar-popup-list-item-link">
+                                                        Profiles
+                                                    </a>
+                                                </li>
+                                            
+                                        
+                                    </ul>
+                                </div>
+                            
+                        
+                    </div>
+                </div>
+            
+        </div>
+    
+
+    
+    
+</div>
+<!-- END Container -->
+
+</body>
+</html>

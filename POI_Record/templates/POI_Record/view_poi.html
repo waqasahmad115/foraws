@@ -1,0 +1,44 @@
+{% extends "navbar.html" %} {% load crispy_forms_tags %} {% block content %}
+<h1 class="text-white ">POI Record</h1>
+<section>
+  <div class="section-body bg-dark">
+    <!-- BEGIN DATATABLE 2 -->
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="table-responsive">
+          <table id="datatable2" class="table order-column hover">
+            <thead>
+              <tr class="bg-primary">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Comments</th>
+                <th>Date Of Birth</th>
+                <th>Image</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for p in poi %}
+              <tr class="gradeX bg-secondary text-white">
+                <td>{{ p.id }}</td>
+                <td>{{ p.name }}</td>
+                <td>{{ p.age }}</td>
+                <td>{{ p.comments }}</td>
+                <td>{{ p.DOB }}</td>
+                <td>{{ p.image1}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+          <!--end .table-responsive -->
+        </div>
+      </div>
+      <!--end .col -->
+    </div>
+    <!--end .row -->
+    <!-- END DATATABLE 2 -->
+  </div>
+  <!--end .section-body -->
+</section>
+{% endblock content %}

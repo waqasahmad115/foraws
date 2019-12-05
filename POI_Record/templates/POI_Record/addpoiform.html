@@ -1,0 +1,25 @@
+{% extends "navbar.html" %} {% load crispy_forms_tags %} {% block content %}
+<div
+  class="content-section border-bottom border-top border-left  border-right bg-light"
+>
+  <form
+    method="POST"
+    action="{% url 'addpoiform' %}"
+    enctype="multipart/form-data"
+  >
+    {% csrf_token %}
+
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">
+        Add POI Record
+      </legend>
+      {{ add_form | crispy }}
+    </fieldset>
+    <div class="form-group">
+      <button class="btn btn-outline-info" type="submit">
+        Add POI Record
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock content %}

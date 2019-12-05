@@ -1,0 +1,12 @@
+{% extends "navbar.html" %} {% load crispy_forms_tags %} {% block content %}
+
+
+<form action= "{% url 'trainclassifier' %}">
+  {% csrf_token %}
+  
+  </div>
+  <div class="form-group">
+    <button class="btn btn-outline-info"  value="submit ">Train Classifier</button>
+</form>
+
+{% endblock content %}

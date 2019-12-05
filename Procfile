@@ -1,0 +1,1 @@
+web: gunicorn Fyp_ASS.wsgi

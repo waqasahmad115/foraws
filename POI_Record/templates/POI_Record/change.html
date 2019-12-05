@@ -1,0 +1,64 @@
+{% extends "navbar.html" %} {% load crispy_forms_tags %} {% block content %}
+<div class="row" p-2>
+        <div class="col-lg-12  offset-1">
+        <div class="content-section border-bottom border-top border-left  border-right bg-light">
+            <form method="POST" action="{% url 'change' %}">
+                <legend class="border-bottom mb-4 text-centre">Add POI Record </legend>
+                {% csrf_token %}
+                <div>
+                    <div class="form-group">
+                        <label >Name* </label>
+                      <input class="form-control p-6" type="text" name="name" placeholder="name"><br>
+                      <label >age*</label>
+                      <input class="form-control" type="number" name="age" placeholder="age"><br>
+                      <label >DOB* </label>
+                      <input class="form-control" type="date" name="DOB" placeholder="DOB"><br>
+                      <label >Comments * </label>
+                      <input class="form-control" type="text" name="comments" placeholder="comments"><br>
+                      
+                      <label >Enter Threat Level* </label>
+                      <input class="form-control" type="text" name="threat_level" placeholder="threat"><br>
+                      <label >Enter Image 1* </label>
+                      <input class="form-control" type="file" name="image1" accept="image/*"><br>
+                      <br> 
+                      <label >Enter Image 2* </label>
+                      <input class="form-control" type="file" name="image2" accept="image/*"><br>
+                      <br> 
+                      <label >Enter Image 3* </label>
+                      <input class="form-control" type="file" name="image3" accept="image/*"><br>
+                      <br> 
+                      <label >Enter Image 4* </label>
+                      <input class="form-control" type="file" name="image4" accept="image/*"><br>
+                      <br> 
+                      <label >Enter Image 5* </label>
+                      <input class="form-control" type="file" name="image5" accept="image/*"><br>
+                      <br> 
+                      <label >Enter Image 6* </label>
+                      <input class="form-control" type="file" name="image6" accept="image/*"><br>
+                      <br> 
+                      <label >Enter Image 7* </label>
+                      <input class="form-control" type="file" name="iamge7" accept="image/*"><br>
+                      <br> 
+                      <label >Enter Image 8* </label>
+                      <input class="form-control" type="file" name="image8" accept="image/*"><br>
+                      <br> 
+                      <label >Enter Image 9* </label>
+                      <input class="form-control" type="file" name="image9" accept="image/*"><br>
+                      <br> 
+            
+                      <label >Enter Image 10* </label>
+                      <input class="form-control" type="file" name="image10" accept="image/*"><br>
+                      <br> 
+                        
+                      </div>
+                      <div class="form-group">
+
+                    <button type="submit" value="POST">calculate embedding</button>
+                    </div>
+              </form>
+            </form>
+            </div>
+            </div>
+        </div>>
+  
+{% endblock content %}

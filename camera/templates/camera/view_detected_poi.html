@@ -1,0 +1,53 @@
+{% extends "navbar.html" %} {% load crispy_forms_tags %} {% block content %}
+<h1 class="text-white "> View Detected POI</h1>
+<section>
+  <div class="section-body bg-dark">
+    <!-- BEGIN DATATABLE 2 -->
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="table-responsive">
+          <table id="datatable2" class="table order-column hover">
+            <thead>
+              <tr class="bg-primary">
+                <th>Detected Image</th>
+                <th> Date Time</th>
+                <th>Longitute</th>
+                <th>Latitude</th>
+                <th>Zone Area</th>
+              </tr>
+            </thead>
+            <tbody class="text-white">
+              {% for md in mydetected %}
+            <tr class="gradeX bg-secondary text-white">
+                <td>{{ md.detected_image }}</td>
+                <td>{{ md.date_time }}</td>
+            {% endfor %}
+            </tr>
+           </tr class="gradeX bg-secondary text-white">
+            {% for m in mypoi %}
+             <tr>
+                <td>{{ m.comments }}</td>
+                <td>{{ m.DOB }}</td>
+              
+            {% endfor %}
+            </tr>
+            {% for mz in myzone %}
+              <tr class="gradeX bg-secondary text-white">
+                <td>{{ mz.zone_area }}</td>
+            {% endfor %}
+             </tr>
+          
+            </tbody>
+          </table>
+
+          <!--end .table-responsive -->
+        </div>
+      </div>
+      <!--end .col -->
+    </div>
+    <!--end .row -->
+    <!-- END DATATABLE 2 -->
+  </div>
+  <!--end .section-body -->
+</section>
+{% endblock content %}
