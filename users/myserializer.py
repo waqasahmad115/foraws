@@ -225,8 +225,7 @@ class SecurityPersonnelSerializer(serializers.ModelSerializer):
         def create(self, validated_data):
             user_data = validated_data.pop('user')
             user = UserSerializer.create(UserSerializer(), validated_data=user_data)
-            securitypersonnel, created = SecurityPersonnel.objects.update_or_create(user=user,phone_number=validated_data.pop('phone_number'), zone_area=validated_data.pop('zone_area'),start_time=validated_data.pop('start_time'),end_time=validated_data.pop('end_time'))
-            auth.login(user)
+            securitypersonnel, created = SecurityPersonnel.objects.update_or_create(user=user,phone_number=validated_data.pop('phone_number'), zone_area=validated_data.pop('zone_area'),start_time=validated_data.pop('start_time'),end_time=validated_data.pop('end_time')
             return securitypersonnel
 
 
