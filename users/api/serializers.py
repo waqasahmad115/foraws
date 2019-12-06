@@ -70,22 +70,16 @@ class UserLoginSerializer(ModelSerializer):
             extra_kwargs={"password":{"write_only":True}}
 
         def validate(self,data):
-            # user_obj=None
-            # username=data["username"]
-            # password=data["password"]
-            # if not username :
-            #     raise ValidationError(" A username is required to login .")
-            # user=User.objects.filter(
-            #     Q(username=username)
-            # ).distinct()
-            # if user.exists() and user.count()==1:
-            #     user_obj=user.first()
-            # else:
-            #     raise ValidationError("This username is not valid ")
-            # if user_obj:
-            #     if not user_obj.check_password(password):
-            #         raise ValidationError("Incorrect password  please try again")    
-            # data["token"]="Some Random Token "
+            username=data["username"]
+            password=data["password"]
+            if not username :
+                raise ValidationError(" A username is required to login .")
+            user=User.objects.filter(
+                Q(username=username)
+            ).distinct()
+            if user.exists() and user.count()==1:
+                user_obj=user.first()
+            data["token"]="Some Random Token "
             return data
 # class OnlineUserSerializer(serializers.ModelSerializer):
 #         class Meta:
