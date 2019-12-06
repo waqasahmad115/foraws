@@ -222,11 +222,10 @@ class SecurityPersonnelSerializer(serializers.ModelSerializer):
         #     securitypersonnel = SecurityPersonnel.objects.all()
         #     serializer = SecurityPersonnelSerializer(SecurityPersonnel, many=True)
         #     return Response(serializer.data)
-        # helo 
         def create(self, validated_data):
             user_data = validated_data.pop('user')
             user = UserSerializer.create(UserSerializer(), validated_data=user_data)
-            securitypersonnel, created = SecurityPersonnel.objects.update_or_create(user=user,phone_number=validated_data.pop('phone_number'), zone_area=validated_data.pop('zone_area'),start_time=validated_data.pop('start_time'),end_time=validated_data.pop('end_time')
+            securitypersonnel, created = SecurityPersonnel.objects.update_or_create(user=user,phone_number=validated_data.pop('phone_number'), zone_area=validated_data.pop('zone_area'),start_time=validated_data.pop('start_time'),end_time=validated_data.pop('end_time'))
             return securitypersonnel
 
 
