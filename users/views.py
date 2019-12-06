@@ -31,6 +31,7 @@ from camera .models import  MyZone,MyCamera,MyDetected_Poi
 # import os
 # K.clear_session()
 # detected_poi= {}
+# helo
 def base(request):
     # print("[INFO] loading face detector...")
     # protoPath = "face_detection/deploy.prototxt"

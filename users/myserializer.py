@@ -222,6 +222,7 @@ class SecurityPersonnelSerializer(serializers.ModelSerializer):
         #     securitypersonnel = SecurityPersonnel.objects.all()
         #     serializer = SecurityPersonnelSerializer(SecurityPersonnel, many=True)
         #     return Response(serializer.data)
+        # helo 
         def create(self, validated_data):
             user_data = validated_data.pop('user')
             user = UserSerializer.create(UserSerializer(), validated_data=user_data)
