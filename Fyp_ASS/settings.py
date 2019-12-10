@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 import os
 #use for development of website  on heroku 
-import django_heroku
+#import django_heroku
 
 import socket
 import smtplib
@@ -249,7 +249,7 @@ CONFIG_DEFAULTS = {
     'NUM_TO_FETCH': 5,
 }
 
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
 
 
 
